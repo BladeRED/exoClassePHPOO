@@ -1,12 +1,18 @@
 <?php
-require "User.php";
-require "Client.php";
-require "utilisateur.php";
-require "article.php";
 
+require "managers/Dbmanager.php";
+require "classes/category.php";
+require "managers/CategoryManager.php";
+require "managers/User.php";
+require "classes/Client.php";
+require "classes/utilisateur.php";
+
+require "classes/article.php";
+
+$categoryManager = new CategoryManager();
+$categories = $categoryManager->getAll();
 $userAdmin = new utilisateur(1, "Lampe à l'heure", "Vlad", "Dracule_moi@vampire.ts", "Transylvator", "lesangdetesmorts",);
 $userClient = new Client(1, "Pigeon", "Jean-Rémichel", "jemefaisarnaque@toutletemps.fr", "VictimeDu42", "azerty", "Chaussure");
-
 $articles = [new article("article1", 2, 5.99, "https://maPhoto.jpg"), new article("article2", 2, 5.99, "https://maPhoto.jpg"), new article("article3", 2, 5.99, "https://maPhoto.jpg")]
 ?>;
 
@@ -17,6 +23,22 @@ $articles = [new article("article1", 2, 5.99, "https://maPhoto.jpg"), new articl
 
 
 <body>
+
+<div class="collapse navbar-collapse" id="navBarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <?php
+
+        foreach ($categories as $category) {
+
+            echo(' <li class ="nav-item active">
+    <a class="nav-link" href=#">' . $category->getNom() . '</a>
+ 
+</li>');
+        }
+
+        ?>
+    </ul>
+</div>
 
 <table class="table table-dark table-striped mb-5 animate__animated animate__jello">
     <thead>
@@ -44,6 +66,7 @@ $articles = [new article("article1", 2, 5.99, "https://maPhoto.jpg"), new articl
     ?>
     </tbody>
 </table>
+
 
 </body>
 
