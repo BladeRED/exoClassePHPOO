@@ -1,24 +1,44 @@
 <?php
 
-class article{
+class Article
+{
 
+    private $_id;
     private $_name;
     private $_quantity;
     private $_price;
     private $_photo;
 
     /**
+     * @param $_id
      * @param $_name
      * @param $_quantity
      * @param $_price
      * @param $_photo
      */
-    public function __construct($_name, $_quantity, $_price, $_photo)
+    public function __construct($_id, $_name, $_quantity, $_price, $_photo)
     {
+        $this->_id = $_id;
         $this->_name = $_name;
         $this->_quantity = $_quantity;
         $this->_price = $_price;
         $this->_photo = $_photo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->_id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->_id = $id;
     }
 
     /**
@@ -84,8 +104,6 @@ class article{
     {
         $this->_photo = $photo;
     }
-
 }
 
-
-?>
+?>;

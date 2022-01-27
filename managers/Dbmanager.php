@@ -9,7 +9,7 @@ abstract class Dbmanager
     public function __construct()
     {
 
-        $this->bdd = new PDO("mysql:dbname=demo_poo;host=127.0.0.1", "root", "");
+        $this->bdd = new PDO("mysql:host=localhost;dbname=demo_poo;charset=utf8", "root", "");
 
     }
 

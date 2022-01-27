@@ -3,17 +3,20 @@
 require "managers/Dbmanager.php";
 require "classes/category.php";
 require "managers/CategoryManager.php";
+require "classes/article.php";
+require "managers/ArticleManager.php";
 require "managers/User.php";
 require "classes/Client.php";
 require "classes/utilisateur.php";
 
-require "classes/article.php";
 
 $categoryManager = new CategoryManager();
 $categories = $categoryManager->getAll();
+$articleManager = new ArticleManager();
+$articles = $articleManager->getAll();
 $userAdmin = new utilisateur(1, "Lampe à l'heure", "Vlad", "Dracule_moi@vampire.ts", "Transylvator", "lesangdetesmorts",);
 $userClient = new Client(1, "Pigeon", "Jean-Rémichel", "jemefaisarnaque@toutletemps.fr", "VictimeDu42", "azerty", "Chaussure");
-$articles = [new article("article1", 2, 5.99, "https://maPhoto.jpg"), new article("article2", 2, 5.99, "https://maPhoto.jpg"), new article("article3", 2, 5.99, "https://maPhoto.jpg")]
+
 ?>;
 
 <!DOCTYPE html>
@@ -24,21 +27,30 @@ $articles = [new article("article1", 2, 5.99, "https://maPhoto.jpg"), new articl
 
 <body>
 
-<div class="collapse navbar-collapse" id="navBarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-        <?php
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <?php
 
-        foreach ($categories as $category) {
+                foreach ($categories as $category) {
 
-            echo(' <li class ="nav-item active">
+                    echo(' <li class ="nav-item active">
     <a class="nav-link" href=#">' . $category->getNom() . '</a>
  
 </li>');
-        }
+                }
 
-        ?>
-    </ul>
-</div>
+                ?>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <table class="table table-dark table-striped mb-5 animate__animated animate__jello">
     <thead>
@@ -47,6 +59,7 @@ $articles = [new article("article1", 2, 5.99, "https://maPhoto.jpg"), new articl
         <th scope="col">Quantité</th>
         <th scope="col">Prix</th>
         <th scope="col">Photo</th>
+        <th scope="col">Actions</th>
 
     </tr>
     </thead>
@@ -59,7 +72,8 @@ $articles = [new article("article1", 2, 5.99, "https://maPhoto.jpg"), new articl
                 <th scope="row">' . $article->getName() . '</th>
                 <td>' . $article->getQuantity() . '</td>
                 <td>' . $article->getPrice() . '</td>
-                <td>' . $article->getPhoto() . '</td>
+                <td><img src ="' . $article->getPhoto() . '" alt ="" class ="prout"></td>
+                <td><a href="remove-player.php?id=' . $article["id"] . '" class ="btn btn-outline-danger">Delete</a></td>
             </tr>');
     }
 

@@ -22,6 +22,46 @@ class Category{
 
     public function getId(){return $this->_id;}
 
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->_nom;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom): void
+    {
+        $this->_nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrdreAffichage()
+    {
+        return $this->_ordreAffichage;
+    }
+
+    /**
+     * @param mixed $ordreAffichage
+     */
+    public function setOrdreAffichage($ordreAffichage): void
+    {
+        $this->_ordreAffichage = $ordreAffichage;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->_id = $id;
+    }
+
 
 }
 
