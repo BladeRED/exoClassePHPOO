@@ -17,7 +17,7 @@ $articles = $articleManager->getAll();
 $userAdmin = new utilisateur(1, "Lampe à l'heure", "Vlad", "Dracule_moi@vampire.ts", "Transylvator", "lesangdetesmorts",);
 $userClient = new Client(1, "Pigeon", "Jean-Rémichel", "jemefaisarnaque@toutletemps.fr", "VictimeDu42", "azerty", "Chaussure");
 
-?>;
+?>
 
 <!DOCTYPE html>
 <html>
@@ -73,7 +73,7 @@ $userClient = new Client(1, "Pigeon", "Jean-Rémichel", "jemefaisarnaque@toutlet
                 <td>' . $article->getQuantity() . '</td>
                 <td>' . $article->getPrice() . '</td>
                 <td><img src ="' . $article->getPhoto() . '" alt ="" class ="prout"></td>
-                <td><a href="remove-player.php?id=' . $article["id"] . '" class ="btn btn-outline-danger">Delete</a></td>
+                
             </tr>');
     }
 
